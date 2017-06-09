@@ -4,6 +4,27 @@ function getRndBias(min, max, bias, influence) {
     return Math.floor(rnd * (1 - mix) + bias * mix);               // mix full range and bias
 }
 
+function eventPicker(eventlist, loading){
+  var count = Object.keys(eventlist).length;
+  console.log(eventlist)
+  var edisp = getRndBias(0, count, 0, 0.8);
+  var picked = eventlist[edisp];
+  console.log(picked);
+  generateCard(picked, loading);
+}
+
+function generateCard(pickedevent, loading){
+  document.getElementById("p1").src = pickedevent.profilePicture;
+  document.getElementById("p2").href = 'https://www.facebook.com/events/'+pickedevent.id;
+  document.getElementById("p3").href = 'http://maps.apple.com/?q='+pickedevent.venue.location.latitude+','+pickedevent.venue.location.longitude;
+  document.getElementById("p4").innerHTML = pickedevent.name;
+  document.getElementById("p5").innerHTML = pickedevent.venue.name;
+  var esdate = new Date(pickedevent.startTime);
+  var efdate = new Date(pickedevent.endTime);
+  document.getElementById("p6").innerHTML = dater(esdate)+', '+ hourfix(esdate)+':'+minutefix(esdate)+'-'+ hourfix(efdate)+':'+minutefix(efdate);
+  loading = false;
+}
+
 function nth(d) {
   if(d>3 && d<21) return 'th'; // thanks kennebec
   switch (d % 10) {
@@ -19,4 +40,24 @@ function dater(d){
   month = "January,February,March,April,May,June,July,August,September,October,November,December"
   .split(",")[d.getMonth()];
   return (date+nth(date) +" "+month)
+}
+
+function minutefix(d){
+  var minutes = d.getMinutes();
+  if(minutes == 0){
+    return '00'
+  }
+  else{
+    return minutes
+  }
+}
+
+function hourfix(d){
+  var hour = d.getHours();
+  if(hour == 0){
+    return '00'
+  }
+  else{
+    return hour
+  }
 }

@@ -65,27 +65,19 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 		}
 		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').success(function(res){
 			vm.eventdata = res.events;
-      var count = Object.keys(vm.eventdata).length;
-      var edisp = getRndBias(0, count, 0, 0.8);
-      vm.eventdisplayed = vm.eventdata[edisp];
-      console.log(vm.eventdisplayed.name)
-      document.getElementById("p1").src = vm.eventdisplayed.profilePicture;
-      document.getElementById("p2").href = 'https://www.facebook.com/events/'+vm.eventdisplayed.id;
-      document.getElementById("p3").href = 'http://maps.apple.com/?q='+vm.eventdisplayed.venue.location.latitude+','+vm.eventdisplayed.venue.location.longitude;
-      document.getElementById("p4").innerHTML = vm.eventdisplayed.name;
-      document.getElementById("p5").innerHTML = vm.eventdisplayed.venue.name;
-      var edate = new Date(vm.eventdisplayed.startTime);
-      document.getElementById("p6").innerHTML = dater(edate);
-
+      eventPicker(vm.eventdata, vm.loading);
 		  vm.loading = false;
-
 		})
 	})
 
 	llb_app.request('location')
 
-  $rootScope.toggler1 = function (){
+  $rootScope.button1 = function (){
     $rootScope.myCard = $rootScope.myCard + 1;
+  };
+
+  $rootScope.button2 = function (){
+    eventPicker(vm.eventdata);
   };
 
 
