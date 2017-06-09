@@ -20,13 +20,12 @@
 		<span class='title md-display-1'> Tapplaner <span>
 	</div>
 	<div ng-if="$root.fullscreen" class='fullscreen' flex layout='column' layout-align="center center">
-		<div class="initial" id="start" flex layout='column' layout-align="center center">
+		<div class="initial" ng-hide="myCard" flex layout='column' layout-align="center center">
 			<h1>Touch!</h1>
 			<img ng-click='button1()' class="dice-button" src="img/dice.png"/>
 			<h2>Best events in your area, <br />  at a tap.</h2>
 		</div>
-		<md-progress-circular id="load">
-		<div class="final"  flex layout='column' layout-align="center center">
+		<div class="final" ng-show="myCard" flex layout='column' layout-align="center center">
 			<md-card>
 				<div class="upbanner" flex layout="row" layout-align="center center">
 					<img class="event-pic" id = "p1"/>

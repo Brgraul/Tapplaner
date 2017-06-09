@@ -49,6 +49,8 @@ pw.run(['$rootScope', '$timeout',  function($rootScope, $timeout){
 pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $http){
 	var vm = this
 	vm.date = new Date()
+  vm.date.setDate(vm.date.getDate() + 1);
+  vm.date = Math.round((vm.date).getTime() / 1000);
 	vm.loading = true;
 	vm.location = ''
 	$rootScope.myCard = 0;
@@ -63,7 +65,7 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 			vm.failed = true
 			return;
 		}
-		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').success(function(res){
+		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&until='+vm.date+'&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').success(function(res){
 			vm.eventdata = res.events;
       eventPicker(vm.eventdata, vm.loading);
 		  vm.loading = false;
