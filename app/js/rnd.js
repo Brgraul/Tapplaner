@@ -4,12 +4,10 @@ function getRndBias(min, max, bias, influence) {
     return Math.floor(rnd * (1 - mix) + bias * mix);               // mix full range and bias
 }
 
-function eventPicker(eventlist, loading){
-  var count = Object.keys(eventlist).length;
-  console.log(eventlist)
+function eventPicker(eventlist, loading, method){
+  var count = method.keys(eventlist).length;
   var edisp = getRndBias(0, count, 0, 0.8);
   var picked = eventlist[edisp];
-  console.log(picked);
   generateCard(picked, loading);
 }
 

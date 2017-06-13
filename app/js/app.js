@@ -8,7 +8,9 @@ pw.config(function($mdThemingProvider) {
 });
 
 pw.run(['$rootScope', '$timeout',  function($rootScope, $timeout){
-
+  $rootScope.Utils = {
+   keys : Object.keys
+  }
 	$rootScope.fullscreen = false;
 	$rootScope.initialized = false;
 
@@ -51,9 +53,8 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 	vm.date = new Date()
   vm.date.setDate(vm.date.getDate() + 1);
   vm.date = Math.round((vm.date).getTime() / 1000);
-	vm.loading = true;
+	$rootScope.loading = true;
 	vm.location = ''
-	$rootScope.myCard = 0;
 
 	vm.eventdata = {}
   vm.eventdisplayed = {}
@@ -65,17 +66,23 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 			vm.failed = true
 			return;
 		}
-		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&until='+vm.date+'&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').success(function(res){
-			vm.eventdata = res.events;
-      eventPicker(vm.eventdata, vm.loading);
-		  vm.loading = false;
-		})
+		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&until='+vm.date+'&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').then(
+      function(response){
+  			vm.eventdata = response.data.events;
+        eventPicker(vm.eventdata, vm.loading, $rootScope.Utils);
+  		  $rootScope.loading = false;
+		  },
+      function(error){
+        console.log("I failed!");
+      }
+    )
 	})
 
 	llb_app.request('location')
-
+  
   $rootScope.button1 = function (){
-    $rootScope.myCard = $rootScope.myCard + 1;
+    document.getElementById("initial").style.display = 'none';
+    document.getElementById("load").style.display = 'block';
   };
 
   $rootScope.button2 = function (){

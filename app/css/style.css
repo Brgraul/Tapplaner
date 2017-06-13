@@ -71,11 +71,11 @@ md-dialog.fullscreen
 	text-align: center;
 }
 
-.fullscreen .initial {
+.fullscreen #initial {
 	width: 100%;
 }
 
-.fullscreen .final {
+.fullscreen #final {
 	width: 100%;
 }
 
