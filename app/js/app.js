@@ -51,7 +51,7 @@ pw.run(['$rootScope', '$timeout',  function($rootScope, $timeout){
 pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $http){
 	var vm = this
 	vm.date = new Date()
-  vm.date.setDate(vm.date.getDate() + 1);
+  vm.date.setDate(vm.date.getDate() + 7);
   vm.date = Math.round((vm.date).getTime() / 1000);
 	$rootScope.loading = true;
 	vm.location = ''
@@ -79,14 +79,29 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 	})
 
 	llb_app.request('location')
-  
+
+  var pic = document.querySelector(".event-pic")
+
+  pic.addEventListener("load", function(){
+    document.getElementById("load").style.display = 'none';
+    if((document.getElementById("initial").style.display) == 'none'){
+      document.getElementById("final").style.display = 'inherit';
+    }
+  })
+
   $rootScope.button1 = function (){
-    document.getElementById("initial").style.display = 'none';
-    document.getElementById("load").style.display = 'block';
+    if($rootScope.loading == false){
+      document.getElementById("initial").style.display = 'none';
+      document.getElementById("final").style.display = 'inherit';
+    }
+    else{
+      document.getElementById("initial").style.display = 'none';
+      document.getElementById("load").style.display = 'block';
+    }
   };
 
   $rootScope.button2 = function (){
-    eventPicker(vm.eventdata);
+    eventPicker(vm.eventdata, vm.loading, $rootScope.Utils);
   };
 
 
