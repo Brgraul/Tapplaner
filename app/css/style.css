@@ -74,7 +74,9 @@ md-dialog.fullscreen
 #final{
 	flex-flow: wrap column;
 	width: 100%;
-	padding: 8px;
+	padding: 3%;
+	align-items: center;
+	padding-bottom: 0px;
 }
 
 .card{
@@ -100,6 +102,7 @@ md-dialog.fullscreen
 	display: flex;
 	flex-flow: wrap row;
 	justify-content: space-between;
+	margin-top: auto;
 }
 
 #final > div > div:nth-child(3) > a{
@@ -206,6 +209,7 @@ body {
   width:66.6px;
   height:66.6px;
   perspective:200px;
+	margin: auto;
 }
 
 #cube2 {
@@ -225,6 +229,7 @@ body {
   background-image: url(../img/Dice2-02.png);
   background-repeat:no-repeat;
   opacity:0.92;
+	background-color: white;
 }
 
 .front2  { transform: rotateY(   0deg ) translateZ( 33.3px ); background-position: -4px -4px; }
