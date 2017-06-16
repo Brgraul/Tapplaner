@@ -16,35 +16,43 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-if='$root.initialized' ng-style='{ "backgroundColor" : $root.fullscreen ? "#ffee58" : "#4cae50" }' layout='column'>
-	<div ng-hide="$root.fullscreen" ng-controller='MainController as vm' layout='row' layout-align='center center' flex class='tile'>
+	<div ng-hide="$root.fullscreen" ng-controller='MainController as vm' class='tile'>
 		<span class='title md-display-1'> Tapplaner <span>
 	</div>
-	<div ng-show="$root.fullscreen" class='fullscreen' flex layout='column' layout-align="center center">
-		<div id="initial" flex layout='column' layout-align="center center">
+	<div ng-show="$root.fullscreen" class='fullscreen'>
+		<div id="initial">
 			<h1>Touch!</h1>
-			<img ng-click='button1()' class="dice-button" src="img/dice.png"/>
+			<div id="container" ng-click="button1()">
+			  <div id="cube" class="show1">
+			    <div class="top"></div>
+			    <div class="front"></div>
+			    <div class="left"></div>
+			    <div class="back"></div>
+			    <div class="right"></div>
+			    <div class="bottom"></div>
+			  </div>
+			</div>
 			<h2>Best events in your area, <br />  at a tap.</h2>
 		</div>
 		<md-progress-circular style="display: none" id="load" md-mode="indeterminate"></md-progress-circular>
-		<div id="final" style="display: none" flex layout='column' layout-align="center center">
-			<md-card>
-				<div class="upbanner" flex layout="row" layout-align="center center">
-					<img class="event-pic" id = "p1"/>
-					<div flex="50" layout="column" layout-align="start center">
-						<md-button class="btn md-raised md-primary" id = "p2" href="www.google.com" target="_blank">Details</md-button>
-						<md-button class="btn md-raised md-primary" id = "p3" href="www.google.com" target="_blank">Navigate</md-button>
+		<div id="final" style="display: none">
+			<div class = "card">
+					<div class="cutter">
+						<img class="event-pic" id = "p1"/>
 					</div>
-				</div>
-		        <md-card-title class="top-0">
-		          <md-card-title-text>
-		            <span class="md-headline" id = "p4"></span>
-		            <span class="md-subhead" id = "p5"></span>
-								<span class="md-subhead" id = "p6"></span>
-		          </md-card-title-text>
-		        </md-card-title>
-		      </md-card>
+					<div class="cardText">
+						<span class="md-headline" id = "p4"></span>
+						<span class="md-subhead" id = "p5"></span>
+						<span class="md-subhead" id = "p6"></span>
+					</div>
+						<div>
+							<md-button class="btn md-raised md-primary" id = "p2" href="www.google.com" target="_blank">Details</md-button>
+							<md-button class="btn md-raised md-primary" id = "p3" href="www.google.com" target="_blank">Navigate</md-button>
+						</div>
+		      </div>
 					<md-button ng-click='button2()' class="btn md-raised md-primary">Try again!</md-button>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/dice.js"></script>
 </body>
 </html>

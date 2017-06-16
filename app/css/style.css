@@ -10,30 +10,19 @@ html, body, iframe
 {
 	z-index:0;
 	color: white;
+	display: flex;
+	height:100%;
 }
 
-.fullscreen .top
+.tile .title
 {
-	background-color: #00bcd4;
-	background-image: url('../img/clouds.png');
-	background-repeat: no-repeat;
-	background-position: 50% 15%;
-	background-size: 80% auto;
+	margin: auto;
 }
 
-.fullscreen .bottom
+.fullscreen
 {
-	background-color: #4cae50;
-}
-
-.fullscreen .bottom .background
-{
-	height: 40px;
-	animation: animatedBackground 350s linear infinite;
-	background: url(../img/bg_repeat.png);
-	background-repeat: repeat-x;
-	background-position-y: bottom ;
-
+	height: 100%;
+	display: flex;
 }
 
 .fullscreen .main-frame
@@ -59,24 +48,56 @@ md-dialog.fullscreen
 }
 
 .fullscreen h1{
-	margin-top: 0;
-	margin-bottom: 9%;
+	margin: 0;
 	font-size: 15.5vh;
 }
 
 .fullscreen h2{
-	margin-top: 10%;
-	margin-bottom: 0;
+	margin: 0;
 	font-size: 4.5vh;
 	text-align: center;
 }
 
 .fullscreen #initial {
 	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: wrap column;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.fullscreen #final {
-	width: 100%;
+#load{
+	margin: auto;
+}
+
+#final{
+	flex-flow: wrap column;
+	max-width: 100%;
+}
+
+.card{
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+	color: rgba(0,0,0,0.87);
+	background-color: rgb(255,255,255);
+	border-radius: 2px;
+	margin: 8px;
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: wrap column;
+	padding: 5%;
+	max-width: 100%;
+}
+
+#final > div > div:nth-child(2){
+	display: flex;
+	flex-flow: wrap column;
+}
+
+
+#final > div > div:nth-child(3){
+	display: flex;
+	flex-flow: wrap row;
 }
 
 .upbanner div{
@@ -88,17 +109,80 @@ md-dialog.fullscreen
 }
 
 .event-pic {
-	margin: 5%;
-	max-width: 42% !important;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+	max-width: 100%;
 }
 
-.top-0{
-	padding-top: 0%;
+.cutter
+{
+    width: 100%;
+	  padding-bottom: 56.25%; /* 16:9 */
+	  background: blue;
+    overflow: hidden;
+    position: relative;
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+		margin-bottom: 4%;
 }
+img {
+    position:absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
 
 @keyframes pulse {
 	0%   { background-color: #ef5350 ; }
 	50% { background-color: #4cae50; }
 	100% { background-color: #ef5350; }
 }
+
+
+/* Animation of the dice */
+
+body {
+  background-color:#055;
+}
+
+#container {
+  width:200px;
+  height:200px;
+  perspective:600px;
+}
+
+#cube {
+  position:relative;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  width: 100%;
+  height: 100%;
+}
+
+#cube div {
+  border:1px solid #ccc;
+  border-radius:30px;
+  width:198px;
+  height:198px;
+  position:absolute;
+  background-image: url(../img/Dice2-01.png);
+  background-repeat:no-repeat;
+  opacity:0.92;
+}
+
+.front  { transform: rotateY(   0deg ) translateZ( 100px ); background-position: -12px -12px; }
+.back   { transform: rotateX( 180deg ) translateZ( 100px ); background-position: -463px -239px; }
+.right  { transform: rotateY(  90deg ) translateZ( 100px ); background-position: -236px -12px; }
+.left   { transform: rotateY( -90deg ) translateZ( 100px ); background-position: -241px -235px; }
+.top    { transform: rotateX(  90deg ) translateZ( 100px ); background-position: -459px -12px; }
+.bottom { transform: rotateX( -90deg ) translateZ( 100px ); background-position: -12px -235px; }
+
+#cube.show1 { transform: translateZ( -100px ) rotateY(    0deg ); }
+#cube.show2 { transform: translateZ( -100px ) rotateX( -180deg ); }
+#cube.show3 { transform: translateZ( -100px ) rotateY(  -90deg ); }
+#cube.show4 { transform: translateZ( -100px ) rotateY(   90deg ); }
+#cube.show5 { transform: translateZ( -100px ) rotateX(  -90deg ); }
+#cube.show6 { transform: translateZ( -100px ) rotateX(   90deg ); }
