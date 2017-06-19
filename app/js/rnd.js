@@ -13,7 +13,6 @@ function eventPicker(eventlist, loading, method){
 
 function generateCard(pickedevent, loading){
   document.getElementById("p1").src = pickedevent.coverPicture;
-  console.log(pickedevent.coverPicture)
   document.getElementById("p2").href = 'https://www.facebook.com/events/'+pickedevent.id;
   document.getElementById("p3").href = 'http://maps.apple.com/?q='+pickedevent.venue.location.latitude+','+pickedevent.venue.location.longitude;
   document.getElementById("p4").innerHTML = pickedevent.name;

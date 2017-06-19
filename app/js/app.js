@@ -112,6 +112,7 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
   };
 
   $rootScope.button2 = function (){
+    showTouch();
     eventPicker(vm.eventdata, vm.loading, $rootScope.Utils);
   };
 
