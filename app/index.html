@@ -15,9 +15,12 @@
 	<link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-if='$root.initialized' ng-style='{ "backgroundColor" : $root.fullscreen ? "#ffee58" : "#4cae50" }' layout='column'>
+<body ng-if='$root.initialized' ng-style='{ "backgroundColor" : $root.fullscreen ? "#ffee58" : "#ffee58" }' layout='column'>
 	<div ng-hide="$root.fullscreen" ng-controller='MainController as vm' class='tile'>
-		<span class='title md-display-1'> Tapplaner <span>
+		<div class="tile-div">
+			<img src="img/dice.png" class="tile-img"/>
+			<span class='title md-display-1'> Tapplaner </span>
+		</div>
 	</div>
 	<div ng-show="$root.fullscreen" class='fullscreen'>
 		<div id="initial">

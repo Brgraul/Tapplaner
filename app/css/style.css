@@ -9,15 +9,17 @@ html, body, iframe
 .tile
 {
 	z-index:0;
-	color: white;
+	color: black;
 	display: flex;
 	height:100%;
+	justify-content: center;
+	align-items: center;
 }
 
-.tile .title
-{
-	margin: auto;
+.tile .tile-img{
+	max-height: 92%;
 }
+
 
 .fullscreen
 {
@@ -30,6 +32,18 @@ html, body, iframe
 	width: 100%;
 	height: 100%;
 	border:none;
+}
+
+.tile-div{
+	max-height: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	height: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding-left: 9%;
+	padding-right: 9%;
+	width: 100%;
 }
 
 .custom-button
@@ -120,10 +134,9 @@ md-dialog.fullscreen
 	min-width: 100%;
 }
 
-.event-pic {
-	max-width: 100%;
-}
 
+/* Css to lock the div at a 16:9 resolution, cropping and centering the image in
+case it doesn't satisfy the ratio  */
 .cutter
 {
     width: 100%;
@@ -131,10 +144,12 @@ md-dialog.fullscreen
 	  background: blue;
     overflow: hidden;
     position: relative;
-		box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+		box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14),
+		0 2px 1px -1px rgba(0,0,0,.12);
 		margin-bottom: 4%;
 }
-img {
+
+.event-pic {
     position:absolute;
     left: -100%;
     right: -100%;
@@ -143,9 +158,10 @@ img {
     margin: auto;
     min-height: 100%;
     min-width: 100%;
+		max-width: 100%;
 }
 
-
+/**/
 
 @keyframes pulse {
 	0%   { background-color: #ef5350 ; }

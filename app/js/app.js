@@ -68,7 +68,7 @@ pw.controller('MainController', ['$rootScope', '$http', function($rootScope, $ht
 			vm.failed = true
 			return;
 		}
-		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&until='+vm.date+'&accessToken=1954493638107409|zGZC5kWhiCVhPw0GBd7M-68RHAI').then(
+		$http.get('https://tapplaner.herokuapp.com/events?lat='+result.data.latitude+'&lng='+result.data.longitude+'&distance=2000&sort=popularity&until='+vm.date+'&accessToken=1786743151638500|YtPMYgzR-YYQeFYq-b9CzGRxaNE').then(
       function(response){
   			vm.eventdata = response.data.events;
   		  $rootScope.loading = false;
